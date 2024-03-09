@@ -1,3 +1,13 @@
-export const TodoList = () => {
-  return <h3>TodoList</h3>;
+import { Grid, GridItem, TodoListItem } from '..';
+
+export const TodoList = ({ todos }) => {
+  return (
+    <Grid>
+      {todos.map(({ id, text }) => (
+        <GridItem key={id}>
+          <TodoListItem />
+        </GridItem>
+      ))}
+    </Grid>
+  );
 };

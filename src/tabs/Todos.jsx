@@ -15,7 +15,7 @@ export const Todos = () => {
     <>
       <Form onSubmit={handleSubmit} />
       <Text textAlign="center">There are no any todos ...</Text>;
-      <TodoList />
+      <TodoList todos={todos} />
     </>
   );
 };
