@@ -4,6 +4,10 @@ import { useState } from 'react';
 
 export const Todos = () => {
   const [todos, setTodos] = useState([]);
+  const handleDelete = id => {
+    const result = todos.filter(todo => todo.id !== id);
+    setTodos(result);
+  };
   const handleSubmit = text => {
     const newTodo = {
       id: nanoid(),
@@ -15,7 +19,7 @@ export const Todos = () => {
     <>
       <Form onSubmit={handleSubmit} />
       <Text textAlign="center">There are no any todos ...</Text>
-      <TodoList todos={todos} />
+      <TodoList todos={todos} onDelete={handleDelete} />
     </>
   );
 };
