@@ -1,6 +1,5 @@
 import { Container, CountryList, Section } from 'components';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { getCountries } from 'service/countryApi';
 
 const Home = () => {
@@ -14,7 +13,6 @@ const Home = () => {
   return (
     <Section>
       <Container>
-        <Link to={'/country'}>To search</Link>
         {Array.isArray(countries) && countries.length > 0 && (
           <CountryList countries={countries} />
         )}
