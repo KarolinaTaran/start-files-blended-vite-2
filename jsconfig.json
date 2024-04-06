@@ -1,13 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
-    "paths": {
-      "components/*": ["components/*"],
-      "styles/*": ["styles/*"],
-      "tabs/*": ["tabs/*"],
-      "apiService/*": ["src/apiService/*"],
-      "hooks/*": ["src/apiService/*"]
-    }
+    "baseUrl": "src"
   },
   "include": ["src"]
 }
