@@ -6,8 +6,11 @@ import { useDispatch } from 'react-redux';
 
 export const Todo = ({ text, counter, id }) => {
   const dispatch = useDispatch();
-  const handleClick = evt => {
-    dispatch(removeTodo(id));
+  const handleClick = async evt => {
+    try {
+      const dispatchStatus = await dispatch(removeTodo(id));
+      console.dir(dispatchStatus);
+    } catch (error) {}
   };
 
   return (
