@@ -19,10 +19,23 @@ export const commentApi = createApi({
       invalidatesTags: ["comments"],
     }),
     deleteComment: builder.mutation({
-      query: (id) => ({ url: `${API_ENDPOINT}/${id}`, method: "DELETE"  }),
+      query: (id) => ({ url: `${API_ENDPOINT}/${id}`, method: "DELETE" }),
+      invalidatesTags: ["comments"],
+    }),
+    updateComment: builder.mutation({
+      query: ({ id, ...body }) => ({
+        url: `${API_ENDPOINT}/${id}`,
+        method: "PUT",
+        body,
+      }),
       invalidatesTags: ["comments"],
     }),
   }),
 });
 
-export const { useGetAllCommentsQuery, useAddCommentMutation, useDeleteCommentMutation } = commentApi;
+export const {
+  useGetAllCommentsQuery,
+  useAddCommentMutation,
+  useDeleteCommentMutation,
+  useUpdateCommentMutation,
+} = commentApi;
