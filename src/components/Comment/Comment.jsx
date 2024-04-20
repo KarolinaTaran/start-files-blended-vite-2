@@ -1,9 +1,11 @@
-import React from 'react';
-import styles from './Comment.module.css';
-import PropTypes from 'prop-types';
-import { TiThumbsUp, TiThumbsDown } from 'react-icons/ti';
-import { formatDateToNow } from '../../helpers/formatDateToNow';
-import { Button } from '../Button/Button';
+import React from "react";
+import styles from "./Comment.module.css";
+import PropTypes from "prop-types";
+import { TiThumbsUp, TiThumbsDown } from "react-icons/ti";
+import { formatDateToNow } from "../../helpers/formatDateToNow";
+import { Button } from "../Button/Button";
+
+import { useDeleteCommentMutation } from "../../redux/commentApi";
 
 export const Comment = ({
   createdAt,
@@ -14,6 +16,10 @@ export const Comment = ({
   thumbsDown,
   id,
 }) => {
+  const [deleteComent] = useDeleteCommentMutation();
+  const handleDelete = () => {
+    deleteComent(id);
+  };
   return (
     <li className={styles.card}>
       <img className={styles.avatar} src={avatar} alt={author} />
@@ -35,10 +41,13 @@ export const Comment = ({
               <TiThumbsUp className={styles.icon} />
             </Button>
 
-            <Button counter={thumbsDown} role='thumbsDown' id={id}>
+            <Button counter={thumbsDown} role="thumbsDown" id={id}>
               <TiThumbsDown className={styles.icon} />
             </Button>
           </div>
+          <button onClick={handleDelete} type="button">
+            Delete
+          </button>
         </div>
       </div>
     </li>
