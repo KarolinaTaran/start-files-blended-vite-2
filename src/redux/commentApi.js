@@ -14,7 +14,11 @@ export const commentApi = createApi({
       query: () => ({ url: API_ENDPOINT }),
       providesTags: ["comments"],
     }),
+    addComment: builder.mutation({
+      query: (body) => ({ url: API_ENDPOINT, method: "POST", body }),
+      providesTags: ["comments"],
+    }),
   }),
 });
 
-export const { useGetAllCommentsQuery } = commentApi;
+export const { useGetAllCommentsQuery, useAddCommentMutation } = commentApi;
